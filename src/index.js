@@ -27,7 +27,7 @@ app.get("/api/student/:id",(req,res)=>{
     res.send(students[requestedStudentIndex]);
 });
 
-app.post("/api/student", (req,res)=>{
+app.post("/api/student/:id", (req,res)=>{
     const requestBody = req.body;
     if(!requestBody.name || !requestBody.currentClass || !requestBody.division){
         res.sendStatus(400);
