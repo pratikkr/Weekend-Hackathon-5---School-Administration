@@ -11,7 +11,7 @@ app.use(bodyParser.json())
 // your code goes here
 const students =require("./InitialData");
 let arrayLength = students.length;
-app.get("/api/student",(req,res)=>{
+app.get("/api/student", (req,res)=>{
     res.send(students);
 });
 
@@ -27,7 +27,7 @@ app.get("/api/student/:id",(req,res)=>{
     res.send(students[requestedStudentIndex]);
 });
 
-app.post("/api/student/:id", (req,res)=>{
+app.post("/api/student/", (req,res)=>{
     const requestBody = req.body;
     if(!requestBody.name || !requestBody.currentClass || !requestBody.division){
         res.sendStatus(400);
@@ -35,13 +35,13 @@ app.post("/api/student/:id", (req,res)=>{
     const student ={
         id: arrayLength + 1,
         name: requestBody.name,
-        currentClass:parseInt(requestBody.currentClass),
+        currentClass: parseInt(requestBody.currentClass),
         division: requestBody.division
     };
     arrayLength++;
     students.push(student);
-    res.send({id:student.id})
-})
+    res.send({id: student.id});
+});
 
 app.put("/api/student/:id", (req,res)=>{
     const id = parseInt(req.params.id);
