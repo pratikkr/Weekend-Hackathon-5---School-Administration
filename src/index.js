@@ -32,7 +32,7 @@ app.post("/api/student/:id", (req,res)=>{
     if(!requestBody.name || !requestBody.currentClass || !requestBody.division){
         res.sendStatus(400);
     }
-    const studnt ={
+    const student ={
         id: arrayLength + 1,
         name: requestBody.name,
         currentClass:parseInt(requestBody.currentClass),
